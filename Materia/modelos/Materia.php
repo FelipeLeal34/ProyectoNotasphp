@@ -41,7 +41,7 @@
 
         public function getidmate($id){
             $row = null;
-            $statement = $this->db->prepare("SELECT * from mate where id_materia = :id");
+            $statement = $this->db->prepare("SELECT * from materias where id_materia = :id");
             $statement->bindParam(":id",$id);
             $statement->execute();
             while($result = $statement->fetch()){
@@ -71,7 +71,7 @@
 
 
         public function eliminarmate($id){
-            $statement = $this->db->prepare("DELETE from materias where id_materias = :id");
+            $statement = $this->db->prepare("DELETE from materias where id_materia = :id");
                $statement->bindParam(":id",$id);
                if ($statement->execute()) {
 

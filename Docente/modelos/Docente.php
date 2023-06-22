@@ -9,9 +9,9 @@
             $this->db = parent::__construct();
         }
 
-        public function agregardoc($nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,$notasmate){
+        public function agregardoc($nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,$usuariodoc,$passworddoc,$perfil,$estadodoc){
 
-            $statement = $this->db->prepare("INSERT INTO docente(Nombredoc,Apellidodoc,Documentodoc,Correodoc,Materiadoc,Notasmate)VALUES(:nombredoc,:apellidodoc,:documentodoc,:correodoc,:materiadoc,:notasmate)");
+            $statement = $this->db->prepare("INSERT INTO docente(Nombredoc,Apellidodoc,Documentodoc,Correodoc,Materiadoc,Usuariodoc,Passworddoc,Perfil,Estadodoc)VALUES(:nombredoc,:apellidodoc,:documentodoc,:correodoc,:materiadoc,:usuariodoc,:passworddoc,:perfil,:estadodoc)");
 
 
             $statement->bindParam(":nombredoc",$nombredoc);
@@ -19,7 +19,13 @@
             $statement->bindParam(":documentodoc",$documentodoc);
             $statement->bindParam(":correodoc",$correodoc);
             $statement->bindParam(":materiadoc",$materiadoc);
-            $statement->bindParam(":notasmate",$notasmate);
+            $statement->bindParam(":usuariodoc",$usuariodoc);
+            $statement->bindParam(":passworddoc",$passworddoc);
+            $statement->bindParam(":perfil",$perfil);
+            $statement->bindParam(":estadodoc",$estadodoc);
+
+
+
 
             if ($statement->execute()) {
                 echo "Docente registrado";
