@@ -43,7 +43,7 @@
         public function getidad($Id)
         {
             $row = null;
-            $statement=$this->db->prepare("SELECT *FROM estudiantes WHERE  id_estudiante=Id");
+            $statement=$this->db->prepare("SELECT *FROM estudiantes WHERE  id_estudiante=:Id");
             $statement->binParam(':Id',$Id);
             $statement->execute();
             while($resul = $statement->fetch())
@@ -52,16 +52,19 @@
             }
             return $row;
         } 
-        public function updatead($Id,$Nombreestu,$Apellidoesstu,$Documentoestu,$Correoestu,$Materia,$Docente,$Promedio,$Fecha_registro)
+        public function updateestudiante($Id,$Nombreestu,$Apellidoesstu,$Documentoestu,$Correoestu,$Materia,$Docente,$Promedio,$Fecha_registro)
         {
-            $statement=$this->db->prepare("UPDATE estudiantes SET Nombreesstu=:Nombreestu,Apellidoestu=:Apellidoestu, Documentoestu=:Documentoestu, Passwordusu=:Paswordad, Estado=:Estadoad WHERE id_usuario=$Id");
+            $statement=$this->db->prepare("UPDATE estudiantes SET Nombreesstu=:Nombreestu,Apellidoestu=:Apellidoestu, Documentoestu=:Documentoestu, Documentoestu=:Documentoestu, Correoestu=:Correoestu, Materia=:Materia, Docente=:Docente, Promedio=:Promedio, Fecha_registro=:Fecha_registro WHERE id_estudiante=$Id");
             $statement->
             $statement->bindParam(':Id',$Id);
             $statement->bindParam(':Nombreestu',$Nombreestu);
             $statement->binParam(':Apellidoestu',$Apellidoestu);
-            $statement->bindParam(':Usuarioad',$Usuarioad);
-            $statement->binParam(':Passwordad'$Passwordad);
-            $statement->bindParam(':Estadoad',$Estadoad);
+            $statement->bindParam(':Documentoestu',$Documentoestu);
+            $statement->binParam(':Correoestu'$Correoestu);
+            $statement->bindParam(':Materia',$Materia);
+            $statement->bindParam(':Docente',$Docente);
+            $statement->bindParam(':Promedio',$Promedio);
+            $statement->bindParam(':Fecha_registro',$Fecha_registro);
             if($statement->execute())
             {
                 header('Location:../pages/index.php');
@@ -75,12 +78,14 @@
     
     public function deletead($Id)
     {
-        $statement=$this->db->prepare("DELETE + FROM estudiantes WHERE id_estudiante=$Id");
+        $statement=$this->db->prepare("DELETE  FROM estudiantes WHERE id_estudiante=$Id");
         $statement->bindParam(':Id',$Id);
         if($statement->execute())
         {
             echo "usuario eliminado";
             header('Location: ../pages/index.php');
-        }else{}
+        }else{
+            header('Location: ../pages/eliminar.php');
+        }
     }
 ?>
