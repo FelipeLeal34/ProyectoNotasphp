@@ -22,6 +22,8 @@
             $statement->bindParam(":usuariodoc",$usuariodoc);
             $statement->bindParam(":passworddoc",$passworddoc);
             $statement->bindParam(":perfil",$perfil);
+
+          
             $statement->bindParam(":estadodoc",$estadodoc);
 
 
@@ -64,8 +66,9 @@
         }
 
 
-        public function actualizardoc($id,$nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,$notasmate){
-            $statement = $this->db->prepare("UPDATE docente SET Nombredoc=:nombredoc, Apellidodoc=:apellidodoc, Documentodoc = :documentodoc, Correodoc = :correodoc, Materiadoc = :materiadoc, Notasmate = :notasmate where id_docente = :id");
+        public function actualizardoc($id,$nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,
+            $usuariodoc,$passworddoc,$perfil,$estadodoc){
+            $statement = $this->db->prepare("UPDATE docente SET Nombredoc=:nombredoc, Apellidodoc=:apellidodoc, Documentodoc = :documentodoc, Correodoc = :correodoc, Materiadoc = :materiadoc where id_docente = :id");
 
             $statement->bindParam(":nombredoc",$nombredoc);
             $statement->bindParam(":apellidodoc",$apellidodoc);
