@@ -9,31 +9,35 @@
 	<title>Inicio de sesion</title>
 </head>
 <body class="bg-body-secondary">
-<div class="container">
+<div class="container-sm">
   
-
-  <form action="/login" method="post" class="bg-light rounded" class="border border-primary">
-    <h2>Iniciar Sesión</h2>
-    <div>
-      <label for="username">Usuario</label>
+<h2>Iniciar Sesión</h2>
+  <form action="/login" method="post" class="bg-light rounded border" class="border border-primary">
+    
+    <div class="mb-3">
+      <label class="form-label" for="username">Usuario</label>
       
-      <input type="text" id="username" name="username" required>
+      <input class="form-control" type="text" id="username" name="username" required>
     </div>
-    <div>
-      <label for="password">Contraseña</label>
+    <div class="mb-3">
+
+      <label class="form-label" for="password">Contraseña</label>
    
 
-      <input type="password" id="password" name="password" required>
+      <input type="password" class="form-control" id="password" name="password" required>
 
     </div>
+
+    <div>
+
       <p>¿olvidaste la contraseña? <a href="">Recuperar contraseña</a>
-    <div>
+        </div>
+        <div>
+    
       <input type="submit" value="Iniciar Sesión" class="btn btn-success">
-    </div>
-    <div>
-     
-   
-    </div>
+      </div>
+    
+
   
    <p>¿No tienes una cuenta? <a href="agregar.html">Regístrate aquí</a>
       </form>
