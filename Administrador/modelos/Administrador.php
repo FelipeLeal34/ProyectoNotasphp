@@ -9,6 +9,17 @@
         }
         public function agregarad($Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfilad,$Estadoad)
         {
+            $sql1 = "SELECT * FROM usuarios WHERE usuario = '$Usuariousu'";
+            $Resultado=$this->db->query($sql1);
+            if($Resultado->rowCount() < 0){
+                echo "<script>
+                alert('El usuario ya esta registrado');
+                window.location = '../pages/agregar.php';
+                </script>";
+            }else
+            {
+
+            
             $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)values(:Nombread, :Apellidoad,:Usuarioad,:Passwordad,:'Administrador',:'Activo')");
 
             $statement->bindParam("Nombread",$Nombread);
@@ -27,6 +38,7 @@
         }
 
     }
+}
     public function getad()
     {
         $row = null;
