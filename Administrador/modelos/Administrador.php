@@ -9,7 +9,25 @@
             $this->db = parent::__construct();
         }
 
+
+
+
         public function agregarad($nombread,$apellidoad,$usuarioad,$passwordad,$perfilad,$estadoad){
+
+
+            $sql1 = "SELECT * FROM usuarios where Usuario = '$usuarioad'" ;
+
+
+            $resultado = $this->db->query($sql1);
+
+        if ($resultado->rowCount() > 0) {
+                echo "<script>alert('El usuario ya está registrado');
+
+                window.location = '../pages/agregar.php';
+                </script>";
+            } 
+
+        else {
 
             $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)VALUES(:nombread,:apellidoad,:usuarioad,:passwordad,:perfilad,:estadoad)");
 
@@ -30,6 +48,8 @@
                 echo "usuario no registrado";
                 header("location: ../pages/agregar.php");
             }
+
+            }
         }
 
 
@@ -37,7 +57,7 @@
         public function getad(){
 
             $row = null;
-            $statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil = 'Administrador'");
+            $statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil = 'administrador'");
             $statement->execute();
             while($result = $statement->fetch()){
                 $row[] = $result;
@@ -48,25 +68,26 @@
         }
 
         public function getidad($id){
-            $row = null;
-            $statement = $this->db->prepare("SELECT * from usuarios where Perfil = 'Administrador' and id_usuario = :id");
+           
+            $statement = $this->db->prepare("SELECT * from usuarios where id_usuario = :id");
             $statement->bindParam(":id",$id);
             $statement->execute();
-            while($result = $statement->fetch()){
-                $row = $result;
-            }
 
-            return $row;
+            $resultado = $statement->fetch(PDO::FETCH_ASSOC);
+           
+
+            return $resultado;
         }
 
 
-        public function actualizarad($id,$nombread,$apellidoad,$usuarioad,$passwordad,$estadoad){
-            $statement = $this->db->prepare("UPDATE usuarios SET Nombreusu=:nombread, Apellidousu=:apellidoad, Usuario = :usuarioad, Passwordusu = :passwordad, Estado = :estadoad where id_usuario = :id");
+        public function actualizarad($id,$nombread,$apellidoad,$usuarioad,$passwordad,$perfil,$estadoad){
+            $statement = $this->db->prepare("UPDATE usuarios SET Nombreusu=:nombread, Apellidousu=:apellidoad, Usuario = :usuarioad, Passwordusu = :passwordad, Perfil = :perfil, Estado = :estadoad where id_usuario = :id");
 
             $statement->bindParam(":nombread",$nombread);
             $statement->bindParam(":apellidoad",$apellidoad);
             $statement->bindParam(":usuarioad",$usuarioad);
             $statement->bindParam(":passwordad",$passwordad);
+            $statement->bindParam(":perfil",$perfil);
             $statement->bindParam(":estadoad",$estadoad);
             $statement->bindParam(":id",$id);
 

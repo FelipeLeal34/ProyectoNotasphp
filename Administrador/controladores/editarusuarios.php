@@ -1,12 +1,14 @@
 <?php 
 
-require_once("../../Conexion.php");
+
+	require_once("../../Conexion.php");
 require_once("../modelos/administrador.php");
 
-if ($_GET) {
+if ($_POST) {
 
 	$admin = new Administrador();
 	$nombre = $_POST['nombre'];
+	$id = $_POST["id"];
 	$apellido = $_POST['apellido'];
 	$usuario = $_POST['usuario'];
 	$password = md5($_POST['password']);
@@ -14,10 +16,9 @@ if ($_GET) {
 	$estado = $_POST['estado'];
 
 
-	$admin->agregarad($nombre,$apellido,$usuario,$password,$perfil,$estado);
+	$admin->actualizarad($id,$nombre,$apellido,$usuario,$password,$perfil,$estado);
 
 }
-
-
 	
+
  ?>
