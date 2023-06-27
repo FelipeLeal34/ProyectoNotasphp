@@ -67,8 +67,8 @@
 				 	<td><?php echo $datos['Usuario'] ?></td>
 				 	<td><?php echo $datos['Perfil'] ?></td>
 				 	<td><?php echo $datos['Estado'] ?></td>
-				 	<td><a href="#"  class="btn btn-success">Actualizar</a></td>
-				 	<td><a href="#" class="btn btn-danger">Eliminar</a></td>
+				 	<td><a href="editar.php?id=<?php echo $datos['id_usuario'] ?>"  class="btn btn-success">Actualizar</a></td>
+				 	<td><a href="eliminar.php?id=<?php echo $datos['id_usuario'] ?>" class="btn btn-danger">Eliminar</a></td>
 				 	
 
 
