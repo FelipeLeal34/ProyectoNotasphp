@@ -9,8 +9,8 @@
         }
         public function agregarad($Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfilad,$Estadoad)
         {
-            $sql1 = "SELECT * FROM usuarios WHERE usuario = '$Usuariousu'";
-            $Resultado=$this->db->query($sql1);
+            $sql = "SELECT * FROM usuarios WHERE usuario = '$Usuariousu'";
+            $Resultado=$this->db->query($sql);
             if($Resultado->rowCount() < 0){
                 echo "<script>
                 alert('El usuario ya esta registrado');

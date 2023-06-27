@@ -12,14 +12,12 @@
 <div class="container">
   
 
-  <form action="/login" method="post" class="bg-light rounded border" class="border border-primary">
+  <form action="../controladores/agregarMaterias.php" method="post" class="bg-light rounded border" class="border border-primary">
     <h2>Agregar Materia</h2>
-    <div
-
-  class="mb-3">
-      <label class = "form-label"for="username">Usuario</label>
+    <div class="mb-3">
+      <label class = "form-label"for="username">Materia</label>
       
-      <input type="text" id="username" name="username" calss="form-control" required>
+      <input type="text" id="username" name="NombreMateria" class="form-control" required>
     </div>
     <div>
       

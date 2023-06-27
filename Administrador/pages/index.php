@@ -31,6 +31,8 @@
 	$obj = new Administrador();
 	$datos = $obj->getadmin();
 
+	 
+	 foreach($datos as $datos){
 	 ?>
 	 <tr>
 	 <td><?php echo$datos['id_usuario'] ?></td>	
@@ -42,6 +44,7 @@
 	 <td><a href="editar.php?Id=<?php echo $datos['id_usuario']?>" class="bt btn-danger">ACTUALIZAR</a></td>
 	 <td><a href="eliminar.php?Id=<?php echo $datos['id_usuario']?>" class="btn btn-primary">ELIMINAR</a></td>
 	 </tr>
+<?php } ?>
 </tbody>
  </table>
 </div>

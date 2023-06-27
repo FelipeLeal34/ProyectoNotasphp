@@ -7,14 +7,15 @@ include_once('../../Conexion.php');
             $this->db = parent::__construct();
 
         }
-    class Materia{
+    
 
-
-        public function agregarad($Materia)
+        public function agregarMate($Materia)
         {
-            $statement = $this->db->prepare("INSERT INTO materias(Nombremate)values(:Nombremate");
+           
 
-            $statement->bindParam(":Nombremate",$Matera);
+            $statement = $this->db->prepare("INSERT INTO materias(Nombremate)values(:Materia)");
+
+            $statement->bindParam(':Materia',$Materia);
             
             if($statement->execute())
             {
@@ -24,6 +25,17 @@ include_once('../../Conexion.php');
                 echo "materia no registrada";
                 header('Location: ../Pages/agregar.php');
         }
+              public function getMate(){
 
+            $row = null;
+            $statement = $this->db->prepare("SELECT * FROM materias");
+            $statement->execute();
+            while($result = $statement->fetch()){
+                $row[] = $result;
+            }
+
+            return $row;
+
+        }
     }
 ?>
