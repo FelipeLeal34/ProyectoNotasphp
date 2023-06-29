@@ -7,7 +7,6 @@ require_once("../modelos/Docente.php");
 if ($_POST) {
 	
 	$doc = new Docente();
-	$docente = new Docente();
 
 	$id = $_POST["id"];
 	$nombre = $_POST['nombre'];

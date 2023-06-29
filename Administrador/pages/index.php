@@ -10,10 +10,6 @@
 <body>
 
 
-	<?php 
-
-
-	 ?>
 
 
 	<div class="container">

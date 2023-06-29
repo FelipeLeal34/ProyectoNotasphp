@@ -94,10 +94,18 @@
 
             if ($statement->execute()) {
                 
-                header("location:../pages/index.php");
-            } else {
               
-                header("location: ../pages/editar.php");
+                echo "<script>alert('USUARIO ACTUALIZADO');
+                window.location = '../pages/index.php';
+                </script>";
+            } else {
+
+
+                echo "<script>alert('USUARIO NO ACTUALIZADO');
+                window.location = '../pages/agregar.php';
+                </script>";
+                
+
             }
         }
 
