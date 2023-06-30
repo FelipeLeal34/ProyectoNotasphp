@@ -12,7 +12,7 @@
 
 	 ?>
 	 <div class="container">
-	 	<h1 class="text-center">LISTADO DE USUARIOS</h1>
+	 	<h1 class="text-center">LISTADO DE MATERIAS</h1>
 	 	<div class="col-auto-mt-5">
 	 		<table class="table">
 	 			<thead>
@@ -36,8 +36,8 @@
 	 				 <tr>
 	 				 	<td><?php echo $datos['id_materia'] ?></td>
 				 	<td><?php echo $datos['Nombremate'] ?></td>
-				 	<td><a href="#"  class="btn btn-success">Actualizar</a></td>
-				 	<td><a href="#" class="btn btn-danger">Eliminar</a></td>
+				 	<td><a href="editar.php?Id=<?php echo $datos['id_materia'] ?>"  class="btn btn-success">Actualizar</a></td>
+				 	<td><a href="eliminar.php?Id=<?php echo $datos['id_materia'] ?>" class="btn btn-danger">Eliminar</a></td>
 	 				 </tr>
 	 				<?php  } ?>
 	 			</tbody>
