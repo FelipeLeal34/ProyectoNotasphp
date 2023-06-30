@@ -112,7 +112,7 @@
 
 
 
-        public function eliminarad($id){
+        public function eliminardoc($id){
             $statement = $this->db->prepare("DELETE from docente where id_docente = :id");
                $statement->bindParam(":id",$id);
                if ($statement->execute()) {

@@ -9,6 +9,21 @@
 </head>
 <body>
 
+	<?php 
+
+
+				require_once("../../Conexion.php");
+				require_once("../../Consultas.php");
+				
+
+
+				$consulta = new Consultas();
+
+				$materias = $consulta->getMaterias();
+				$docentes = $consulta->getDocentes();
+
+?>
+
 		<div class="container">
 		<h1 class="text-center">REGISTRO DE ESTUDIANTES</h1>
 	<form action="../controladores/agregarestu.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
@@ -37,6 +52,14 @@
 			<label for="materia" class="form-label">Materia</label>
 			<select class="form-select" id="materia" name="materia">
 
+				<?php
+
+				foreach($materias as $materia){ ?>
+					<option value="<?php echo $materia['id_materia'] ?> "> <?php echo $materia['Nombremate'] ?></option>
+
+
+					<?php } ?>
+
 			</select>
 			
 		</div>
@@ -44,21 +67,11 @@
 		<div class="mb-3">
 			<label for="docente" class="form-label">Docente</label>
 			<select class="form-select" id="docente" name="docente">
-				<?php 
-
-
-				require_once("../../Conexion.php");
-				require_once("../../Docente/modelos/Docente.php");
-				require_once("../../Materia/modelos/Materia.php");
-
-
-				$docente = new Docente();
-
-				$docentes = $docente->getdoc();
-
+				<?php
 
 				foreach($docentes as $docente){ ?>
 					<option value="<?php echo $docente['id_docente'] ?> "> <?php echo $docente['Nombredoc'] ?></option>
+				
 
 
 

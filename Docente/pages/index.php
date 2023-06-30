@@ -9,11 +9,61 @@
 </head>
 <body>
 
+	<nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+
+		<div class="container">
+
+			<ul class="nav nav-underline justify-content-center">
+				<li class="nav-item">
+					<a href="../../Administrador/pages/index.php" class="nav-link ">Administrador</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Docente/pages/index.php" class="nav-link active">Docente</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Estudiante/pages/index.php" class="nav-link">Estudiante</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Materia/pages/index.php" class="nav-link">Materias</a>
+				</li>
+
+
+
+				</ul>
+
+				<ul class="nav nav-pills">
+
+					<li class="nav-item">
+						<a class="nav-link">log in</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link">Sign up</a>
+					</li>
+
+				</ul>
+			
+
+		</div>
+
+	</nav>
+
+
 
 
 	<div class="container">
 
 		<h1 class="text-center">LISTADO DE DOCENTES</h1>
+		<a class="btn btn-info" href="agregar.php">Agregar</a>
 
 	<div class="col-auto-mt-5">
 
