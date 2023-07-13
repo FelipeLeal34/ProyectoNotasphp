@@ -9,6 +9,11 @@
 </head>
 <body>
 
+	<?php 
+
+	require_once("../../Usuario/controladores/validar.php");
+	 ?>
+
 
 
 	<nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
@@ -44,12 +49,11 @@
 
 				<ul class="nav nav-pills">
 
-					<li class="nav-item">
-						<a class="nav-link">log in</a>
-					</li>
+				
 
 					<li class="nav-item">
-						<a class="nav-link">Sign up</a>
+
+						<a href="../../Usuario/controladores/salir.php" class="nav-link">Log out</a>
 					</li>
 
 				</ul>
@@ -65,7 +69,7 @@
 	<div class="container">
 
 
-
+		<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
 		<h1 class="text-center">LISTADO DE USUARIOS</h1>
 		<a class="btn btn-info" href="agregar.php">Agregar</a>
 

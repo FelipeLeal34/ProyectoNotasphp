@@ -16,6 +16,10 @@
 
 	require_once("../../Conexion.php");
 	require_once("../modelos/Administrador.php");
+	
+
+	require_once("../../Usuario/controladores/validar.php");
+	
 
 
 	$id = $_GET['id'];
@@ -28,6 +32,7 @@
 	 ?>
 
 	<form action="../controladores/eliminarusuarios.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
+			<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
 		<h2>ELIMINAR USUARIO</h2>
 		<div class="mb-3">
 		<label class="form-label">id usuario: </label>

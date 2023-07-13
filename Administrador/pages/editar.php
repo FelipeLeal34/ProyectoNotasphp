@@ -15,6 +15,11 @@
 	require_once("../modelos/Administrador.php");
 
 
+
+	require_once("../../Usuario/controladores/validar.php");
+	
+
+
 	$id = $_GET["id"];
 	$admin = new Administrador();
 	$row = $admin->getidad($id);
@@ -22,8 +27,56 @@
 	if ($row) {
 
 		?>
+
+
+	 <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+
+		<div class="container">
+
+			<ul class="nav nav-underline justify-content-center">
+				<li class="nav-item">
+					<a href="../../Administrador/pages/index.php" class="nav-link active">Administrador</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Docente/pages/index.php" class="nav-link">Docente</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Estudiante/pages/index.php" class="nav-link">Estudiante</a>
+				</li>
+			
+
+			
+				<li class="nav-item">
+					<a href="../../Materia/pages/index.php" class="nav-link">Materias</a>
+				</li>
+
+
+
+				</ul>
+
+				<ul class="nav nav-pills">
+
+				
+					<li class="nav-item">
+
+						<a href="../../Usuario/controladores/salir.php" class="nav-link">Log out</a>
+					</li>
+
+				</ul>
+			
+
+		</div>
+
+	</nav>
 		
 		<div class="container">
+				<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
 		<h1 class="text-center">Edicion de usuarios</h1>
 	<form action="../controladores/editarusuarios.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
 
