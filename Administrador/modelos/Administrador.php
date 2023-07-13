@@ -1,99 +1,131 @@
 <?php
-    include_once('../../Conexion.php');
+
+
+    include_once("../../Conexion.php");
+
     class Administrador extends Conexion{
 
-        public function __construct()
-        {
+        public function __construct(){
             $this->db = parent::__construct();
-
         }
-        public function agregarad($Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfilad,$Estadoad)
-        {
-            $sql = "SELECT * FROM usuarios WHERE usuario = '$Usuariousu'";
-            $Resultado=$this->db->query($sql);
-            if($Resultado->rowCount() < 0){
-                echo "<script>
-                alert('El usuario ya esta registrado');
+
+
+
+
+        public function agregarad($nombread,$apellidoad,$usuarioad,$passwordad,$perfilad,$estadoad){
+
+
+            $sql1 = "SELECT * FROM usuarios where Usuario = '$usuarioad'" ;
+
+
+            $resultado = $this->db->query($sql1);
+
+        if ($resultado->rowCount() > 0) {
+                echo "<script>alert('El usuario ya está registrado');
+
                 window.location = '../pages/agregar.php';
                 </script>";
-            }else
-            {
+            } 
 
-            
-            $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)values(:Nombread, :Apellidoad,:Usuarioad,:Passwordad,:'Administrador',:'Activo')");
+        else {
 
-            $statement->bindParam("Nombread",$Nombread);
-            $statement->bindParam(":Apellidoad",$Apellidoad);
-            $statement->bindParam(":Usuarioad",$Usuarioad);
-            $statement->bindParam(":Passwordad",$Passwordad);
-            $statement->bindParam(":Perfilad"$Perfilad);
-            $statement->bindParam(":Estadoad",$Estadoad);
-            if($statement->execute())
-            {
-                echo"usuario registrado";
-                header('Location: ../index.php');
-            }else
-                echo "usuario no registrado";
-                header('Location: ../Pages/agregar.php');
-        }
+            $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)VALUES(:nombread,:apellidoad,:usuarioad,:passwordad,:perfilad,:estadoad)");
 
-    }
-}
-    public function getad()
-    {
-        $row = null;
-        $statement =$this->db->prepared("SELECT * FROM usuarios WHERE perfil ='Aministrador'");
-        $statement->execute();
-        while($resul= $statement->fecth())
-        {
-            $row[]=$resul;
-        }
-        return $row;
-    }
-        public function getidad($Id)
-        {
-            $row = null;
-            $statement=$this->db->prepare("SELECT *FROM usuarios WHERE perfil='Administador' AND id_usuario=Id");
-            $statement->binParam(':Id',$Id);
-            $statement->execute();
-            while($resul = $statement->fetch())
-            {
-                $row=$resul;
-            }
-            return $row;
-        } 
-        public function updatead($Id,$Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Estadoad)
-        {
-            $statement=$this->db->prepare("UPDATE usuarios SET Nombreusu=:Nombread,Apellidousu=:Apellidousu, Usuario=:Usuarioad, Passwordusu=:Paswordad, Estado=:Estadoad WHERE id_usuario=$Id");
-            $statement->
-            $statement->bindParam(':Id',$Id);
-            $statement->bindParam(':Nombread',$Nombread);
-            $statement->binParam(':Apellidoad',$Apellidoad);
-            $statement->bindParam(':Usuarioad',$Usuarioad);
-            $statement->binParam(':Passwordad'$Passwordad);
-            $statement->bindParam(':Estadoad',$Estadoad);
-            if($statement->execute())
-            {
-                header('Location:../pages/index.php');
 
-            }else
+            $statement->bindParam(":nombread",$nombread);
+            $statement->bindParam(":apellidoad",$apellidoad);
+            $statement->bindParam(":usuarioad",$usuarioad);
+            $statement->bindParam(":passwordad",$passwordad);
+             $statement->bindParam(":perfilad",$perfilad);
+              $statement->bindParam(":estadoad",$estadoad);
 
-            {
-                header('Location: ../pages/editar.php');
-            }
-        }
     
-    public function deletead($Id)
-    {
-        $statement=$this->db->prepare("DELETE + FROM usuarios WHERE id_usuario=$Id");
-        $statement->bindParam(':Id',$Id);
-        if($statement->execute())
-        {
-            echo "usuario eliminado";
-            header('Location: ../pages/index.php')
-        }else
-        {
-             header('Location: ../pages/eliminar.php');
+
+            if ($statement->execute()) {
+                echo "usuario registrado";
+                header("location:../pages/index.php");
+            } else {
+                echo "usuario no registrado";
+                header("location: ../pages/agregar.php");
+            }
+
+            }
         }
+
+
+
+        public function getad(){
+
+            $row = null;
+            $statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil = 'administrador'");
+            $statement->execute();
+            while($result = $statement->fetch()){
+                $row[] = $result;
+            }
+
+            return $row;
+
+        }
+
+        public function getidad($id){
+           
+            $statement = $this->db->prepare("SELECT * from usuarios where id_usuario = :id");
+            $statement->bindParam(":id",$id);
+            $statement->execute();
+
+            $resultado = $statement->fetch(PDO::FETCH_ASSOC);
+           
+
+            return $resultado;
+        }
+
+
+        public function actualizarad($id,$nombread,$apellidoad,$usuarioad,$passwordad,$perfil,$estadoad){
+            $statement = $this->db->prepare("UPDATE usuarios SET Nombreusu=:nombread, Apellidousu=:apellidoad, Usuario = :usuarioad, Passwordusu = :passwordad, Perfil = :perfil, Estado = :estadoad where id_usuario = :id");
+
+            $statement->bindParam(":nombread",$nombread);
+            $statement->bindParam(":apellidoad",$apellidoad);
+            $statement->bindParam(":usuarioad",$usuarioad);
+            $statement->bindParam(":passwordad",$passwordad);
+            $statement->bindParam(":perfil",$perfil);
+            $statement->bindParam(":estadoad",$estadoad);
+            $statement->bindParam(":id",$id);
+
+
+            if ($statement->execute()) {
+                
+              
+                echo "<script>alert('USUARIO ACTUALIZADO');
+                window.location = '../pages/index.php';
+                </script>";
+            } else {
+
+
+                echo "<script>alert('USUARIO NO ACTUALIZADO');
+                window.location = '../pages/agregar.php';
+                </script>";
+                
+
+            }
+        }
+
+
+
+        public function eliminarad($id){
+            $statement = $this->db->prepare("DELETE from usuarios where id_usuario = :id");
+               $statement->bindParam(":id",$id);
+               if ($statement->execute()) {
+
+                echo "Usuario eliminado";
+                
+                header("location:../pages/index.php");
+            } else {
+
+                echo "Usuario no eliminado";
+              
+                header("location: ../pages/eliminar.php");
+            }
+        }
+
     }
 ?>

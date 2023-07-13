@@ -12,7 +12,7 @@
 <div class="container-sm">
   
 <h2>Iniciar Sesión</h2>
-  <form action="/login" method="post" class="bg-light rounded border" class="border border-primary">
+  <form action="Usuario/controladores/controlusuarios.php" method="post" class="bg-light rounded border" class="border border-primary">
     
     <div class="mb-3">
       <label class="form-label" for="username">Usuario</label>
