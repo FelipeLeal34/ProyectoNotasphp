@@ -14,7 +14,7 @@
 
         public function agregarad($nombread,$apellidoad,$usuarioad,$passwordad,$perfilad,$estadoad){
 
-
+            $hash1 = password_hash($Passwordusu, PASSWORD_DEFAULT)
             $sql1 = "SELECT * FROM usuarios where Usuario = '$usuarioad'" ;
 
 
@@ -35,7 +35,7 @@
             $statement->bindParam(":nombread",$nombread);
             $statement->bindParam(":apellidoad",$apellidoad);
             $statement->bindParam(":usuarioad",$usuarioad);
-            $statement->bindParam(":passwordad",$passwordad);
+            $statement->bindParam(":passwordad",$hash1);
              $statement->bindParam(":perfilad",$perfilad);
               $statement->bindParam(":estadoad",$estadoad);
 

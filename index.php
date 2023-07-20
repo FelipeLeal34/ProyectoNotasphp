@@ -11,10 +11,10 @@
 <body class="bg-body-secondary">
 <div class="container-sm">
   
-<h2>Iniciar Sesión</h2>
-  <form action="Usuario/controladores/controlusuarios.php" method="post" class="bg-light rounded border" class="border border-primary">
-    
+
+  <form action="Usuario/controladores/Usuarioscontrol.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
     <div class="mb-3">
+      <h2>Iniciar Sesión</h2>
       <label class="form-label" for="username">Usuario</label>
       
       <input class="form-control" type="text" id="username" name="username" required>
@@ -39,7 +39,7 @@
     
 
   
-   <p>¿No tienes una cuenta? <a href="agregar.html">Regístrate aquí</a>
+   <p>¿No tienes una cuenta? <a href="Administrador/pages/agregar.php">Regístrate aquí</a>
       </form>
     </div>
 </body>

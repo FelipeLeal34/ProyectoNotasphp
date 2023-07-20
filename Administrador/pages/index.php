@@ -1,5 +1,5 @@
 <?php 
-require_once('../../Usuario/controladores/validar.php')
+//require_once('../../Usuario/controladores/validar.php')
  ?>
 <!DOCTYPE html>
 <html>
@@ -71,7 +71,7 @@ require_once('../../Usuario/controladores/validar.php')
 	<div class="container">
 
 
-		<h2>BIENVENIDO <?php echo $_SESSION['username'] ?></h2>
+		<h2>BIENVENIDO <?php echo $_SESSION['usuario'] ?></h2>
 		<h1 class="text-center">LISTADO DE USUARIOS</h1>
 		<a class="btn btn-info" href="agregar.php">Agregar</a>
 
