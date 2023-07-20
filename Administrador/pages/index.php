@@ -9,11 +9,7 @@
 </head>
 <body>
 
-	<?php 
-
-	require_once("../../Usuario/controladores/validar.php");
-	 ?>
-
+	
 
 
 	<nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
@@ -69,7 +65,7 @@
 	<div class="container">
 
 
-		<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
+		
 		<h1 class="text-center">LISTADO DE USUARIOS</h1>
 		<a class="btn btn-info" href="agregar.php">Agregar</a>
 

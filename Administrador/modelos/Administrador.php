@@ -15,6 +15,9 @@
         public function agregarad($nombread,$apellidoad,$usuarioad,$passwordad,$perfilad,$estadoad){
 
 
+            $hash = password_hash($passwordad, PASSWORD_DEFAULT);
+
+
             $sql1 = "SELECT * FROM usuarios where Usuario = '$usuarioad'" ;
 
 
@@ -29,13 +32,13 @@
 
         else {
 
-            $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)VALUES(:nombread,:apellidoad,:usuarioad,:passwordad,:perfilad,:estadoad)");
+            $statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)VALUES(:nombread,:apellidoad,:usuarioad,:hash,:perfilad,:estadoad)");
 
 
             $statement->bindParam(":nombread",$nombread);
             $statement->bindParam(":apellidoad",$apellidoad);
             $statement->bindParam(":usuarioad",$usuarioad);
-            $statement->bindParam(":passwordad",$passwordad);
+            $statement->bindParam(":hash",$hash);
              $statement->bindParam(":perfilad",$perfilad);
               $statement->bindParam(":estadoad",$estadoad);
 

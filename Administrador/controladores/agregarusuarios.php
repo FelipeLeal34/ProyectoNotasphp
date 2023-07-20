@@ -9,7 +9,7 @@ if ($_POST) {
 	$nombre = $_POST['nombre'];
 	$apellido = $_POST['apellido'];
 	$usuario = $_POST['usuario'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
 	$perfil = $_POST['perfil'];
 	$estado = $_POST['estado'];
 

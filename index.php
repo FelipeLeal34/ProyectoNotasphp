@@ -11,10 +11,11 @@
 <body class="bg-body-secondary">
 
   
-<div class="container-sm">
+<div class="container">
   
-<h2>Iniciar Sesión</h2>
-  <form action="Usuario/controladores/controlusuario.php" method="post" class="bg-light rounded border" class="border border-primary">
+
+  <form action="Usuario/controladores/usuarioscontrol.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border" >
+    <h2>Iniciar Sesión</h2>
     
     <div class="mb-3">
       <label class="form-label" for="username">Usuario</label>
@@ -26,7 +27,7 @@
       <label class="form-label" for="password">Contraseña</label>
    
 
-      <input type="password" class="form-control" id="password" name="password" required>
+       <input type="password" class="form-control" id="password" name="password" required>
 
     </div>
 

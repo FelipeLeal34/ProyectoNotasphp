@@ -9,10 +9,7 @@
 </head>
 <body class="bg-body-secondary bg-gradient">
 
-	<?php 
 
-	require_once("../../Usuario/controladores/validar.php");
-	 ?>
 
 	 <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
 
@@ -62,7 +59,7 @@
 
 	
 	<div class="container">
-			<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
+			
 		<h1 class="text-center">REGISTRO DE USUARIOS</h1>
 	<form action="../controladores/agregarusuarios.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
 
