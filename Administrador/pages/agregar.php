@@ -1,6 +1,4 @@
-<?php 
-require_once('../../Usuario/controladores/validar.php')
- ?>
+
 <!DOCTYPE html>
 <html>
 <head>

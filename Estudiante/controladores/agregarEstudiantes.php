@@ -5,11 +5,20 @@ require_once("../modelos/Estudiante.php");
 
 if ($_POST) {
 
-	$admin = new Materia();
-	echo $nombre = $_POST['NombreMateria'];
-	
+	 $estudiante = new Estudiante();
+	 $Nombreestu = $_POST['nombre'];
+	 $Apellidoestu = $_POST['apellido'];
+	 $Documentoestu = $_POST['documento'];
+	 $Correoestu = $_POST['correo'];
+	 $Materia = $_POST['materia'];
+	 $Docente = $_POST['docente'];
+	 $Promedio = $_POST['promedio'];
+	 $Fecha_registro = $_POST['fecha'];
 
-	$admin->agregarMate($nombre);
+
+	 echo $Fecha_registro;
+
+	$estudiante ->agregarestu($Nombreestu,$Apellidoestu,$Documentoestu,$Correoestu,$Materia,$Docente,$Promedio, $Fecha_registro);
 	
 }
 

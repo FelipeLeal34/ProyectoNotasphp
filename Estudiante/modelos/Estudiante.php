@@ -7,18 +7,19 @@
             $this->db = parent::__construct();
 
         }
-        public function agregarad($Nombreestu,$Apellidoestu,$Documentoestu,$Correoestu,$Materia,$Docente,$Promedio, $Fecha_registro)
+        public function agregarestu($Nombreestu,$Apellidoestu,$Documentoestu,$Correoestu,$Materia,$Docente,$Promedio, $Fecha_registro)
         {
-            $statement = $this->db->prepare("INSERT INTO estudiantes(Nombreestu,Apellidoestu,Documentoestu,Correoestu,Materia,Docente,Promedio,Fecha_registro)values(:Nombreestu, :Apellidoestu,:Documentoestu,:Correoestu,:Materia,:Docente,:Promedio,:Fecha_registro");
+            $statement = $this->db->prepare("INSERT INTO estudiantes(Nombreestu,Apellidoestu,Documentoestu,Correoestu,Materia,Docente,Promedio,Fecha_registro)values(:Nombreestu, :Apellidoestu,:Documentoestu,:Correoestu,:Materia,:Docente,:Promedio,:Fecha_registro)");
 
-            $statement->bindParam("Nombreestu",$Nombreestu);
+            $statement->bindParam(":Nombreestu",$Nombreestu);
             $statement->bindParam(":Apellidoestu",$Apellidoestu);
             $statement->bindParam(":Documentoestu",$Documentoestu);
             $statement->bindParam(":Correoestu",$Correoestu);
-            $statement->bindParam(":Materia"$Materia);
+            $statement->bindParam(":Materia",$Materia);
             $statement->bindParam(":Docente",$Docente);
             $statement->bindParam(":Promedio",$Promedio);
             $statement->bindParam(":Fecha_registro",$Fecha_registro);
+
             if($statement->execute())
             {
                 echo"estudiante registrado";
@@ -28,11 +29,11 @@
                 header('Location: ../Pages/agregar.php');
         }
 
-    }
+    
     public function getad()
     {
         $row = null;
-        $statement =$this->db->prepared("SELECT * FROM estudiantes");
+        $statement =$this->db->prepared("SELECT * FROM estudiante");
         $statement->execute();
         while($resul= $statement->fecth())
         {
@@ -60,7 +61,7 @@
             $statement->bindParam(':Nombreestu',$Nombreestu);
             $statement->binParam(':Apellidoestu',$Apellidoestu);
             $statement->bindParam(':Documentoestu',$Documentoestu);
-            $statement->binParam(':Correoestu'$Correoestu);
+            $statement->binParam(':Correoestu',$Correoestu);
             $statement->bindParam(':Materia',$Materia);
             $statement->bindParam(':Docente',$Docente);
             $statement->bindParam(':Promedio',$Promedio);
@@ -88,4 +89,6 @@
             header('Location: ../pages/eliminar.php');
         }
     }
+}
+
 ?>
