@@ -3,14 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Usuarios</title>
+	<title>Docentes</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
 
+	<?php require_once("../../Docente/modelos/Docente.php"); 
+	require_once('../../Conexion.php');
+	require_once("../../Usuario/modelos/Usuario.php"); 
+
 	
-<?php require_once("../../Usuario/modelos/Usuario.php"); 
+
 
 
 ?>
@@ -21,13 +25,13 @@
 
 			<ul class="nav nav-underline justify-content-center">
 				<li class="nav-item">
-					<a href="../../Administrador/pages/index.php" class="nav-link active">Usuarios</a>
+					<a href="../../Administrador/pages/index.php" class="nav-link ">Usuarios</a>
 				</li>
 			
 
 			
 				<li class="nav-item">
-					<a href="../../Administrador/pages/docentes.php" class="nav-link">Docentes</a>
+					<a href="../../Docente/pages/index.php" class="nav-link active">Docentes</a>
 				</li>
 			
 
@@ -48,7 +52,6 @@
 
 				<ul class="nav nav-pills">
 
-
 					<li class="nav-item "><a class="nav-link disabled"href=""><?php echo $_SESSION['nombre'] ?></a></li>
 
 				
@@ -57,6 +60,7 @@
 
 						<a href="../../Usuario/controladores/salir.php" class="nav-link">Log out</a>
 					</li>
+
 
 				</ul>
 			
@@ -70,9 +74,7 @@
 
 	<div class="container">
 
-
-		
-		<h1 class="text-center">LISTADO DE USUARIOS</h1>
+		<h1 class="text-center">LISTADO DE DOCENTES</h1>
 		<a class="btn btn-info" href="agregar.php">Agregar</a>
 
 	<div class="col-auto-mt-5">
@@ -86,9 +88,12 @@
 
 	<tr>
 
-				<th scope="col">id_usuario</th>
+				<th scope="col">id_docente</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellido</th>
+				<th scope="col">Documento</th>
+				<th scope="col">correo</th>
+				<th scope="col">materia</th>
 				<th scope="col">Usuario</th>
 				<th scope="col">Perfil</th>
 				<th scope="col">Estado</th>
@@ -104,26 +109,27 @@
 			<tbody>
 				<?php 
 
-				require_once('../../Conexion.php');
-				require_once('../modelos/administrador.php');
+				
 
-
-				$usu = new Administrador();
-				$datos = $usu->getad();
+				$doc = new Docente();
+				$datos = $doc->getdoc();
 
 
 				 	foreach ($datos as $datos ) { ?>
 				 <tr>
 
 				 
-				 	<td><?php echo $datos['id_usuario'] ?></td>
-				 	<td><?php echo $datos['Nombreusu'] ?></td>
-				 	<td><?php echo $datos['Apellidousu'] ?></td>
-				 	<td><?php echo $datos['Usuario'] ?></td>
+				 	<td><?php echo $datos['id_docente'] ?></td>
+				 	<td><?php echo $datos['Nombredoc'] ?></td>
+				 	<td><?php echo $datos['Apellidodoc'] ?></td>
+				 	<td><?php echo $datos['Documentodoc'] ?></td>
+				 	<td><?php echo $datos['Correodoc'] ?></td>
+				 	<td><?php echo $datos['Materiadoc'] ?></td>
+				 	<td><?php echo $datos['Usuariodoc'] ?></td>
 				 	<td><?php echo $datos['Perfil'] ?></td>
-				 	<td><?php echo $datos['Estado'] ?></td>
-				 	<td><a href="editar.php?id=<?php echo $datos['id_usuario'] ?>"  class="btn btn-success">Actualizar</a></td>
-				 	<td><a href="eliminar.php?id=<?php echo $datos['id_usuario'] ?>" class="btn btn-danger">Eliminar</a></td>
+				 	<td><?php echo $datos['Estadodoc'] ?></td>
+				 	<td><a href="editar.php?id=<?php echo $datos['id_docente'] ?>"  class="btn btn-success">Actualizar</a></td>
+				 	<td><a href="eliminar.php?id=<?php echo $datos['id_docente'] ?>" class="btn btn-danger">Eliminar</a></td>
 				 	
 
 
@@ -149,6 +155,5 @@
 	</div>
 
 	</div>
-
 </body>
 </html>

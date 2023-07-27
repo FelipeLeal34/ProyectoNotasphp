@@ -13,10 +13,11 @@
 
 	require_once("../../Conexion.php");
 	require_once("../modelos/Administrador.php");
+	 require_once("../../Usuario/modelos/Usuario.php"); 
 
 
 
-	require_once("../../Usuario/controladores/validar.php");
+
 	
 
 
@@ -62,6 +63,10 @@
 
 				<ul class="nav nav-pills">
 
+					
+					<li class="nav-item "><a class="nav-link disabled"href=""><?php echo $_SESSION['nombre'] ?></a></li>
+
+
 				
 					<li class="nav-item">
 
@@ -76,7 +81,8 @@
 	</nav>
 		
 		<div class="container">
-				<h3>Bienvenido <?php echo $_SESSION['usuario'] ?></h3>
+				
+
 		<h1 class="text-center">Edicion de usuarios</h1>
 	<form action="../controladores/editarusuarios.php" method="post" class="bg-light bg-gradient shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
 

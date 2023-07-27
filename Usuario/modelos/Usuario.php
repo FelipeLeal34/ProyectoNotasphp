@@ -42,7 +42,7 @@ session_start();
             }
         }
 
-
+        /*
         public function validarSesion(){
 
             if ($_SESSION['usuario'] ) {
@@ -56,11 +56,20 @@ session_start();
                 }
                 $_SESSION['start'] = time();
             }
-        }
+
+            if (!$_SESSION['validar']) {
+    
+            print "<script>alert('Esta pagina es solo para usuarios registrados');
+            window.location = '../../index.php';
+            </script>";
+}
+        }*/
 
         public function cerrarSesion(){
+            $_SESSION['validar'] = false;
             session_unset();
             session_destroy();
+            header("Location: ../../index.php");
         }
 
 

@@ -9,47 +9,45 @@
 </head>
 <body>
 
+	<?php require_once("../../Usuario/modelos/Usuario.php"); 
+
+
+?>
+
 	<nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
 
 		<div class="container">
 
 			<ul class="nav nav-underline justify-content-center">
 				<li class="nav-item">
-					<a href="../../Administrador/pages/index.php" class="nav-link ">Administrador</a>
+					<a href="../../Estudiante/pages/index.php" class="nav-link active">Estudiantes</a>
 				</li>
 			
 
 			
 				<li class="nav-item">
-					<a href="../../Docente/pages/index.php" class="nav-link active">Docente</a>
+					<a href="../../Materia/pages/index.php" class="nav-link ">Materias</a>
 				</li>
 			
 
 			
-				<li class="nav-item">
-					<a href="../../Estudiante/pages/index.php" class="nav-link">Estudiante</a>
-				</li>
-			
-
-			
-				<li class="nav-item">
-					<a href="../../Materia/pages/index.php" class="nav-link">Materias</a>
-				</li>
-
+	
 
 
 				</ul>
 
 				<ul class="nav nav-pills">
 
-					<li class="nav-item">
-						<a class="nav-link">log in</a>
-					</li>
+					<li class="nav-item "><a class="nav-link disabled"href=""><?php echo $_SESSION['nombre'] ?></a></li>
+
+				
 
 					<li class="nav-item">
-						<a class="nav-link">Sign up</a>
+
+						<a href="../../Usuario/controladores/salir.php" class="nav-link">Log out</a>
 					</li>
 
+				
 				</ul>
 			
 
@@ -60,91 +58,7 @@
 
 
 
-	<div class="container">
-
-		<h1 class="text-center">LISTADO DE DOCENTES</h1>
-		<a class="btn btn-info" href="agregar.php">Agregar</a>
-
-	<div class="col-auto-mt-5">
-
-
-
-		<table class="table">
-
-
-			<thead>
-
-	<tr>
-
-				<th scope="col">id_docente</th>
-				<th scope="col">Nombre</th>
-				<th scope="col">Apellido</th>
-				<th scope="col">Documento</th>
-				<th scope="col">correo</th>
-				<th scope="col">materia</th>
-				<th scope="col">Usuario</th>
-				<th scope="col">Perfil</th>
-				<th scope="col">Estado</th>
-				<th scope="col">Actualizar</th>
-				<th scope="col">ELIMINAR</th>
-
-
-			</tr>
-			</thead>
-
-		
-
-			<tbody>
-				<?php 
-
-				require_once('../../Conexion.php');
-				require_once('../modelos/Docente.php');
-
-
-				$doc = new Docente();
-				$datos = $doc->getdoc();
-
-
-				 	foreach ($datos as $datos ) { ?>
-				 <tr>
-
-				 
-				 	<td><?php echo $datos['id_docente'] ?></td>
-				 	<td><?php echo $datos['Nombredoc'] ?></td>
-				 	<td><?php echo $datos['Apellidodoc'] ?></td>
-				 	<td><?php echo $datos['Documentodoc'] ?></td>
-				 	<td><?php echo $datos['Correodoc'] ?></td>
-				 	<td><?php echo $datos['Materiadoc'] ?></td>
-				 	<td><?php echo $datos['Usuariodoc'] ?></td>
-				 	<td><?php echo $datos['Perfil'] ?></td>
-				 	<td><?php echo $datos['Estadodoc'] ?></td>
-				 	<td><a href="editar.php?id=<?php echo $datos['id_docente'] ?>"  class="btn btn-success">Actualizar</a></td>
-				 	<td><a href="eliminar.php?id=<?php echo $datos['id_docente'] ?>" class="btn btn-danger">Eliminar</a></td>
-				 	
-
-
-
-
-			
-				 </tr>
-				 <?php } ?>
-				 	
-				 
-
-				
-
-
-
-			</tbody>
-
-
-			
-
-		</table>
-
-	</div>
-
-	</div>
+	
 
 </body>
 </html>

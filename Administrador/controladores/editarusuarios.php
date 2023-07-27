@@ -11,7 +11,7 @@ if ($_POST) {
 	$id = $_POST["id"];
 	$apellido = $_POST['apellido'];
 	$usuario = $_POST['usuario'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
 	$perfil = $_POST['perfil'];
 	$estado = $_POST['estado'];
 

@@ -1,7 +1,8 @@
 <?php 
 
-	session_start();
-	session_destroy();
-	header("Location: ../../index.php");
 
+require_once("../modelos/Usuario.php");
+
+	$user = new Usuario();
+	$user->cerrarSesion();
  ?>

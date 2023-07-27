@@ -60,7 +60,7 @@
         public function getad(){
 
             $row = null;
-            $statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil = 'administrador'");
+            $statement = $this->db->prepare("SELECT * FROM usuarios where Perfil = 'administrador'");
             $statement->execute();
             while($result = $statement->fetch()){
                 $row[] = $result;
