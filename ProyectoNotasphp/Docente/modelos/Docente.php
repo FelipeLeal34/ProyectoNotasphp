@@ -1,0 +1,132 @@
+<?php
+
+
+    include_once("../../Conexion.php");
+
+    class Docente extends Conexion{
+
+    public function __construct(){
+            $this->db = parent::__construct();
+        }
+
+
+
+        public function agregardoc($nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,$usuariodoc,$passworddoc,$perfil,$estadodoc){
+
+
+             $sql1 = "SELECT * FROM docente where Usuariodoc = '$usuariodoc'" ;
+
+
+            $resultado = $this->db->query($sql1);
+
+        if ($resultado->rowCount() > 0) {
+                echo "<script>alert('El usuario ya está registrado');
+
+                window.location = '../pages/agregar.php';
+                </script>";
+            } 
+
+        else {
+
+            $statement = $this->db->prepare("INSERT INTO docente(Nombredoc,Apellidodoc,Documentodoc,Correodoc,Materiadoc,Usuariodoc,Passworddoc,Perfil,Estadodoc)VALUES(:nombredoc,:apellidodoc,:documentodoc,:correodoc,:materiadoc,:usuariodoc,:passworddoc,:perfil,:estadodoc)");
+
+
+            $statement->bindParam(":nombredoc",$nombredoc);
+            $statement->bindParam(":apellidodoc",$apellidodoc);
+            $statement->bindParam(":documentodoc",$documentodoc);
+            $statement->bindParam(":correodoc",$correodoc);
+            $statement->bindParam(":materiadoc",$materiadoc);
+            $statement->bindParam(":usuariodoc",$usuariodoc);
+            $statement->bindParam(":passworddoc",$passworddoc);
+            $statement->bindParam(":perfil",$perfil);
+
+          
+            $statement->bindParam(":estadodoc",$estadodoc);
+
+
+
+
+            if ($statement->execute()) {
+                    print"<script>alert('Docente registrado');
+                window.location = '../../Docente/pages/index.php'
+                </script>";
+            } else{
+                 echo"<script>alert('Docente no registrado');
+                window.location = '../pages/agregar.php'
+                </script>";
+            }
+        }
+    }
+
+
+
+        public function getdoc(){
+
+            $row = null;
+            $statement = $this->db->prepare("SELECT * FROM docente");
+            $statement->execute();
+            while($result = $statement->fetch()){
+                $row[] = $result;
+            }
+
+            return $row;
+
+        }
+
+        public function getiddoc($id){
+            $row = null;
+            $statement = $this->db->prepare("SELECT * from docente where id_docente = :id");
+            $statement->bindParam(":id",$id);
+            $statement->execute();
+            while($result = $statement->fetch()){
+                $row = $result;
+            }
+
+            return $row;
+        }
+
+
+        public function actualizardoc($id,$nombredoc,$apellidodoc,$documentodoc,$correodoc,$materiadoc,
+            $usuariodoc,$passworddoc,$perfil,$estadodoc){
+            $statement = $this->db->prepare("UPDATE docente SET Nombredoc=:nombredoc, Apellidodoc=:apellidodoc, Documentodoc = :documentodoc, Correodoc = :correodoc, Materiadoc = :materiadoc, Usuariodoc=:usuariodoc, Passworddoc = :passworddoc, Perfil = :perfil, Estadodoc = :estadodoc where id_docente = :id");
+
+            $statement->bindParam(":nombredoc",$nombredoc);
+            $statement->bindParam(":apellidodoc",$apellidodoc);
+            $statement->bindParam(":documentodoc",$documentodoc);
+            $statement->bindParam(":correodoc",$correodoc);
+            $statement->bindParam(":materiadoc",$materiadoc);
+            $statement->bindParam(":usuariodoc",$usuariodoc);
+            $statement->bindParam(":passworddoc",$passworddoc);
+            $statement->bindParam(":perfil",$perfil);
+            $statement->bindParam(":estadodoc",$estadodoc);
+          
+            $statement->bindParam(":id",$id);
+
+   if ($statement->execute()) {
+                echo "Docente registrado";
+                header("location:../../Admninistrador/pages/index.php");
+            } else {
+                echo "Docente no registrado";
+                header("location: ../pages/editar.php");
+            }
+        }
+
+
+
+        public function eliminardoc($id){
+            $statement = $this->db->prepare("DELETE from docente where id_docente = :id");
+               $statement->bindParam(":id",$id);
+                 if ($statement->execute()) {
+                echo "Docente registrado";
+                header("location:../../Admninistrador/pages/index.php");
+            } else {
+                echo "Docente no registrado";
+                header("location: ../pages/eliminar.php");
+            }
+        }
+
+    }
+
+
+    
+?>
